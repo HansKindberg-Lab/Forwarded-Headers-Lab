@@ -1,0 +1,75 @@
+﻿@model HomeViewModel
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Forwarded-Headers-Lab</title>
+	</head>
+	<body>
+		<h1>Forwarded-Headers-Lab</h1>
+		<ul>
+			<li>
+				<strong>Connection.ClientCertificate:</strong> @Context.Connection.ClientCertificate
+			</li>
+			<li>
+				<strong>Connection.Id:</strong> @Context.Connection.Id
+			</li>
+			<li>
+				<strong>Connection.LocalIpAddress:</strong> @Context.Connection.LocalIpAddress
+			</li>
+			<li>
+				<strong>Connection.LocalPort:</strong> @Context.Connection.LocalPort
+			</li>
+			<li>
+				<strong>Connection.RemoteIpAddress:</strong> @Context.Connection.RemoteIpAddress
+			</li>
+			<li>
+				<strong>Connection.RemotePort:</strong> @Context.Connection.RemotePort
+			</li>
+			<li>
+				<strong>Request.Host:</strong> @Context.Request.Host
+			</li>
+			<li>
+				<strong>Request.IsHttps:</strong> @Context.Request.IsHttps
+			</li>
+			<li>
+				<strong>Request.Method:</strong> @Context.Request.Method
+			</li>
+			<li>
+				<strong>Request.Path:</strong> @Context.Request.Path
+			</li>
+			<li>
+				<strong>Request.Protocol:</strong> @Context.Request.Protocol
+			</li>
+			<li>
+				<strong>Request.QueryString:</strong> @Context.Request.QueryString
+			</li>
+			<li>
+				<strong>Request.Scheme:</strong> @Context.Request.Scheme
+			</li>
+		</ul>
+		<h2>Response-headers</h2>
+		<ul>
+			@foreach(var (key, value) in Context.Response.Headers.OrderBy(item => item.Key))
+			{
+				<li>
+					<strong>@key:</strong> @value
+				</li>
+			}
+		</ul>
+		<h2>Request-headers</h2>
+		<ul>
+			@foreach(var (key, value) in Context.Request.Headers.OrderBy(item => item.Key))
+			{
+				<li>
+					<strong>@key:</strong> @value
+				</li>
+			}
+		</ul>
+		<h2>Forwarded-headers-options</h2>
+		<pre>@Model.ForwardedHeadersOptions</pre>
+		<h2>Default forwarded-headers-options</h2>
+		<pre>@Model.DefaultForwardedHeadersOptions</pre>
+	</body>
+</html>
