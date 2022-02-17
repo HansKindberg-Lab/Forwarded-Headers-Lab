@@ -12,4 +12,4 @@ Web-application, without configuration, pushed to Docker Hub: https://hub.docker
 
 - [appsettings](/Source/Application/appsettings.Development.json)
 - [Startup (clear)](/Source/Application/Startup.cs#L55)
-- [Startup](/Source/Application/Startup.cs#L62)
+- [Startup](/Source/Application/Startup.cs#L64)
