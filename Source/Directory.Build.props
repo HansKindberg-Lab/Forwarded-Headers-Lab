@@ -4,7 +4,6 @@
 		<AnalysisLevel>6.0</AnalysisLevel>
 		<EnableNETAnalyzers>true</EnableNETAnalyzers>
 		<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
-		<LangVersion>10.0</LangVersion>
 		<NoWarn>CA1014</NoWarn>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
