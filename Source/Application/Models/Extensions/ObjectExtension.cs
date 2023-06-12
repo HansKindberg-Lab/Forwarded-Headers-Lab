@@ -1,7 +1,6 @@
 using System;
 using System.Text.Json;
-using System.Text.Json.Serialization;
-using Application.Models.Text.Json.Serialization;
+using Application.Models.Text.Json.Extensions;
 
 namespace Application.Models.Extensions
 {
@@ -21,15 +20,9 @@ namespace Application.Models.Extensions
 			{
 				if(_jsonSerializerOptions == null)
 				{
-					var jsonSerializerOptions = new JsonSerializerOptions
-					{
-						DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-						TypeInfoResolver = new TypeInfoResolver(),
-						WriteIndented = true
-					};
+					var jsonSerializerOptions = new JsonSerializerOptions();
 
-					jsonSerializerOptions.Converters.Add(new IpAddressJsonConverter());
-					jsonSerializerOptions.Converters.Add(new IpNetworkJsonConverter());
+					jsonSerializerOptions.SetDefaults();
 
 					_jsonSerializerOptions = jsonSerializerOptions;
 				}
