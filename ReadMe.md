@@ -11,5 +11,5 @@ Web-application, without configuration, pushed to Docker Hub: https://hub.docker
 ### 1.1 Example
 
 - [appsettings](/Source/Application/appsettings.Development.json)
-- [Startup (clear)](/Source/Application/Startup.cs#L55)
-- [Startup](/Source/Application/Startup.cs#L64)
+- [Program (clear)](/Source/Application/Program.cs#L16)
+- [Program](/Source/Application/Program.cs#L25)

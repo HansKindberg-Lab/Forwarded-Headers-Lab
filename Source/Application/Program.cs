@@ -1,22 +1,42 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using System.ComponentModel;
+using System.Net;
+using Application.Models.ComponentModel;
+using Application.Models.Configuration;
+using Application.Models.Configuration.Extensions;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Application
+TypeDescriptor.AddAttributes(typeof(IPAddress), new TypeConverterAttribute(typeof(IpAddressTypeConverter)));
+TypeDescriptor.AddAttributes(typeof(IPNetwork), new TypeConverterAttribute(typeof(IpNetworkTypeConverter)));
+
+var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
-	public static class Program
-	{
-		#region Methods
+	options.AllowedHosts.Clear();
+	options.KnownNetworks.Clear();
+	options.KnownProxies.Clear();
+});
 
-		public static IHostBuilder CreateHostBuilder(string[] args)
-		{
-			return Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
-		}
+var forwardedHeadersSection = builder.Configuration.GetSection(ConfigurationKeys.ForwardedHeadersPath);
 
-		public static void Main(string[] args)
-		{
-			CreateHostBuilder(args).Build().Run();
-		}
+builder.Services.Configure<ForwardedHeadersOptions>(forwardedHeadersSection);
 
-		#endregion
-	}
-}
+builder.Services.AddControllersWithViews();
+
+var application = builder.Build();
+
+application.UseDeveloperExceptionPage();
+
+var configuration = application.Services.GetRequiredService<IConfiguration>();
+
+if(configuration.IsEnabledSection(ConfigurationKeys.ForwardedHeadersPath))
+	application.UseForwardedHeaders();
+
+application.UseStaticFiles()
+	.UseRouting()
+	.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
+
+application.Run();
