@@ -13,14 +13,10 @@ trim_trailing_whitespace = true
 [*.cshtml]
 charset = utf-8-bom
 
-# [*.{cshtml,config}]
-# charset = utf-8-bom
-
 # Tabs are not supported in YAML: https://yaml.org/faq.html
 [*.{yaml,yml}]
 indent_size = 2
 indent_style = space
-#tab_width = 2
 
 [*.cs]
 # Set all, https://docs.microsoft.com/en-us/visualstudio/code-quality/use-roslyn-analyzers?view=vs-2019#set-rule-severity-of-multiple-analyzer-rules-at-once-in-an-editorconfig-file
