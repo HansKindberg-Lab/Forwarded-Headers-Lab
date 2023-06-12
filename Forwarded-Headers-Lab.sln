@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32126.317
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{0EB613BE-0EF4-422E-A5BB-2956DB9232C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{4101B8E1-3ECC-4707-9AAA-F9DAF15D0688}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\Docker-deploy.yml = .github\workflows\Docker-deploy.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".root", ".root", "{81E3EBB6-536D-4573-8EF6-21F8BC584172}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
+		NuGet.config = NuGet.config
+		ReadMe.md = ReadMe.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{8BB230B2-1A0C-4712-991A-D2F15FC04BF4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Source\Application\Application.csproj", "{687D2866-F47F-423B-9FDE-DE4208CFC154}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{687D2866-F47F-423B-9FDE-DE4208CFC154}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{687D2866-F47F-423B-9FDE-DE4208CFC154}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{687D2866-F47F-423B-9FDE-DE4208CFC154}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{687D2866-F47F-423B-9FDE-DE4208CFC154}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4101B8E1-3ECC-4707-9AAA-F9DAF15D0688} = {0EB613BE-0EF4-422E-A5BB-2956DB9232C9}
+		{687D2866-F47F-423B-9FDE-DE4208CFC154} = {8BB230B2-1A0C-4712-991A-D2F15FC04BF4}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A2C46EF5-435B-4752-BD51-47AFFD9A6A60}
+	EndGlobalSection
+EndGlobal
