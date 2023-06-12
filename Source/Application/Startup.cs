@@ -2,6 +2,8 @@ using System;
 using System.ComponentModel;
 using System.Net;
 using Application.Models.ComponentModel;
+using Application.Models.Configuration;
+using Application.Models.Configuration.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -36,10 +38,12 @@ namespace Application
 			if(applicationBuilder == null)
 				throw new ArgumentNullException(nameof(applicationBuilder));
 
-			applicationBuilder
-				.UseDeveloperExceptionPage()
-				.UseForwardedHeaders()
-				.UseStaticFiles()
+			applicationBuilder.UseDeveloperExceptionPage();
+
+			if(this.Configuration.IsEnabledSection(ConfigurationKeys.ForwardedHeadersPath))
+				applicationBuilder.UseForwardedHeaders();
+
+			applicationBuilder.UseStaticFiles()
 				.UseRouting()
 				.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
 		}
@@ -59,7 +63,7 @@ namespace Application
 				options.KnownProxies.Clear();
 			});
 
-			var forwardedHeadersSection = this.Configuration.GetSection("ForwardedHeaders");
+			var forwardedHeadersSection = this.Configuration.GetSection(ConfigurationKeys.ForwardedHeadersPath);
 
 			services.Configure<ForwardedHeadersOptions>(forwardedHeadersSection);
 
