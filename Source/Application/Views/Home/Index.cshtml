@@ -68,8 +68,18 @@
 			}
 		</ul>
 		<h2>Forwarded-headers-options</h2>
+		<p>
+			<strong>Enabled = @Model.ForwardedHeadersEnabled</strong>
+		</p>
 		<pre>@Model.ForwardedHeadersOptions</pre>
 		<h2>Default forwarded-headers-options</h2>
 		<pre>@Model.DefaultForwardedHeadersOptions</pre>
+		<h2>IP to host-name map</h2>
+		<ul>
+			@foreach(var (key, value) in Model.IpToHostNameMap)
+			{
+				<li><strong>@key</strong> = @value</li>
+			}
+		</ul>
 	</body>
 </html>

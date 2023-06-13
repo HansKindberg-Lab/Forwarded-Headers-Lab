@@ -3,6 +3,7 @@ using System.Net;
 using Application.Models.ComponentModel;
 using Application.Models.Configuration;
 using Application.Models.Configuration.Extensions;
+using Application.Models.Net;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +24,8 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
 var forwardedHeadersSection = builder.Configuration.GetSection(ConfigurationKeys.ForwardedHeadersPath);
 
 builder.Services.Configure<ForwardedHeadersOptions>(forwardedHeadersSection);
+
+builder.Services.AddSingleton<IDnsResolver, DnsResolver>();
 
 builder.Services.AddControllersWithViews();
 
