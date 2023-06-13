@@ -13,3 +13,7 @@ Web-application, without configuration, pushed to Docker Hub: https://hub.docker
 - [appsettings](/Source/Application/appsettings.Development.json)
 - [Program (clear)](/Source/Application/Program.cs#L16)
 - [Program](/Source/Application/Program.cs#L25)
+
+## 2 Links
+
+- https://github.com/dotnet/aspnetcore/blob/main/src/Middleware/HttpOverrides/src/ForwardedHeadersMiddleware.cs
